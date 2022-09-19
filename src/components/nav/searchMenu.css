@@ -1,0 +1,41 @@
+#app-title {
+    height: 100%;
+    width: 100%;
+    margin-left: .2em;
+    font-weight: bolder;
+    font-size: 2em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#search-menu {
+    height: 3em;
+    width: 100%;
+}
+
+#search-menu-content-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#search-menu-input {
+    background-color: rgb(255,255,255,0.3);
+    height: 2em;
+    width: 100%;
+}
+
+.search-menu-button {
+    height: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 600px) {
+
+
+}

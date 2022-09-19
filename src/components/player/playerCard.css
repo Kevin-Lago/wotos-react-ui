@@ -1,0 +1,32 @@
+.player-card {
+    /* margin-top: 1em; */
+    margin: 1em;
+    width: calc(100% - 2em);
+}
+
+.player-title {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.player-clan-tag {
+
+}
+
+.player-nickname {
+
+}
+
+.player-online-status {
+
+}
+
+.player-details {
+    height: auto;
+    width: 100%;
+
+}

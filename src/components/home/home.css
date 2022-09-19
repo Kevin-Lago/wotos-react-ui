@@ -1,0 +1,15 @@
+.home-intro {
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 600px) {
+    .home-intro {
+        margin: 1em;
+        height: auto;
+        width: calc(100% - 2em);
+    }
+}
