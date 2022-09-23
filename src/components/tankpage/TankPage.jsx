@@ -102,14 +102,14 @@ class TankPage extends React.Component {
 
     componentWillMount = () => {
         axios.get(
-            `https://api.worldoftanks.com/wot/encyclopedia/vehicles/?application_id=da67d6dbc1f23b9e54688febe7d5da56&fields=description%2C+is_gift%2C+is_premium%2C+is_wheeled%2C+prices_xp%2C+price_credit%2C+short_name%2C+name%2C+nation%2C+type%2C+tier%2C+tank_id%2C+price_gold%2C+default_profile%2C+crew%2C+images.big_icon`
+            `https://api.worldoftanks.com/wot/encyclopedia/vehicles/?application_id=&fields=description%2C+is_gift%2C+is_premium%2C+is_wheeled%2C+prices_xp%2C+price_credit%2C+short_name%2C+name%2C+nation%2C+type%2C+tier%2C+tank_id%2C+price_gold%2C+default_profile%2C+crew%2C+images.big_icon`
             )
             .then(wotTanksListResult => {
                 let tankList = wotTanksListResult.data.data
                 axios.post('/api/tanks', tankList).then(result => {console.log(result)})
             })
         axios.get(
-            'https://api.worldoftanks.com/wot/encyclopedia/info/?application_id=da67d6dbc1f23b9e54688febe7d5da56&fields=vehicle_nations'
+            'https://api.worldoftanks.com/wot/encyclopedia/info/?application_id=&fields=vehicle_nations'
         ).then(data => {
             if (data.status !== 200) {
                 alert('error fetching nation data')
@@ -141,7 +141,7 @@ class TankPage extends React.Component {
             nation = 'czech'
         }
         axios.get(
-            `https://api.worldoftanks.com/wot/encyclopedia/vehicles/?application_id=da67d6dbc1f23b9e54688febe7d5da56&nation=${nation}`
+            `https://api.worldoftanks.com/wot/encyclopedia/vehicles/?application_id=&nation=${nation}`
         ).then(data => {
             if (data.status !== 200) {
                 alert('error fetching tanks list by nation')
@@ -164,7 +164,7 @@ class TankPage extends React.Component {
 
     selectTank = (tank) => {
         axios.get(
-            `https://api.worldoftanks.com/wot/encyclopedia/vehicleprofile/?application_id=da67d6dbc1f23b9e54688febe7d5da56&tank_id=${tank.tank_id}`
+            `https://api.worldoftanks.com/wot/encyclopedia/vehicleprofile/?application_id=&tank_id=${tank.tank_id}`
         ).then(data => { console.log(data) })
         this.setState({
             selectedTank: tank
