@@ -9,20 +9,13 @@ export default class SearchMenu extends Component {
         this.state = {
             searchValue: '',
             darkTheme: this.props.darkTheme,
-            handleSearch: this.props.handleSearch
+            handleSearch: this.props.handleSearch,
+            handleSearchInputChange: this.props.handleSearchInputChange
         }
-
-        this.handleSearchInputChange = this.handleSearchInputChange.bind(this)
     }
 
     componentDidMount() {
         document.getElementById('search-menu-input').focus();
-    }
-
-    handleSearchInputChange(event) {
-        this.setState({
-            searchValue: event.target.value
-        });
     }
 
     render() {

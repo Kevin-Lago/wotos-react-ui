@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import CalcWn8Color from '../../util/CalcWn8Color';
 import CalcWrColor from '../../util/CalcWrColor';
+import GlobalRatingColor from '../../util/GlobalRatingColor';
 import './playerCard.css';
 
 export default class PlayerCard extends Component {
@@ -43,6 +44,11 @@ export default class PlayerCard extends Component {
             "color": this.state.recentWn8 >= 0 & this.state.recentWn8 <= 700 || this.state.recentWn8 >= 1800 & this.state.recentWn8 <= 2000 ? 'white' : 'black'
         }
 
+        let globalRatingStyle = {
+            "background-color": GlobalRatingColor(this.state.globalRating),
+            "color": this.state.globalRating >= 0 & this.state.globalRating <= 2600 || this.state.globalRating >= 9200 & this.state.globalRating <= 10500 ? 'white' : 'black'
+        }
+
         let averageWinRateStyle = {
             "background-color": CalcWrColor(this.state.averageWinRate),
             "color": this.state.averageWinRate >= 56 & this.state.averageWinRate <= 64 || this.state.averageWinRate >= 0 & this.state.averageWinRate <= 43 ? 'white' : 'black'
@@ -72,28 +78,52 @@ export default class PlayerCard extends Component {
                         Online/Offline
                     </div>
                 </div>
-                <div className='player-details-overview'>
-                    <div className='player-average-wn8' style={averageWn8Style}>
-                        {this.state.averageWn8}
-                    </div>
-                    <div className='player-recent-wn8' style={recentWn8Style}>
-                        {this.state.recentWn8}
-                    </div>
-                    <div className='player-global-rating'>
-                        {this.state.globalRating}
-                    </div>
-                    <div className='player-average-win-rate' style={averageWinRateStyle}>
-                        {this.state.averageWinRate}
-                    </div>
-                    <div className='player-recent-win-rate' style={recentWinRateStyle}>
-                        {this.state.recentWinRate}
+                <div className='player-details-overview-wrapper'>
+                    <div className='player-details-overview-values'>
+                        <div className='player-details-overview-value-wrapper' style={averageWn8Style}>
+                            <div className='player-details-overview-label'>
+                                Average Wn8
+                            </div>
+                            <div className='player-details-overview-value'>
+                                {this.state.averageWn8}
+                            </div>
+                        </div>
+                        <div className='player-details-overview-value-wrapper' style={recentWn8Style}>
+                            <div className='player-details-overview-label'>
+                                Recent Wn8
+                            </div>
+                            <div className='player-details-overview-value'>
+                                {this.state.recentWn8}
+                            </div>
+                        </div>
+                        <div className='player-details-overview-value-wrapper' style={globalRatingStyle}>
+                            <div className='player-details-overview-label'>
+                                Global Rating
+                            </div>
+                            <div className='player-details-overview-value'>
+                                {this.state.globalRating}
+                            </div>
+                        </div>
+                        <div className='player-details-overview-value-wrapper' style={averageWinRateStyle}>
+                            <div className='player-details-overview-label'>
+                                Average Win Rate
+                            </div>
+                            <div className='player-details-overview-value'>
+                                {this.state.averageWinRate}%
+                            </div>
+                        </div>
+                        <div className='player-details-overview-value-wrapper' style={recentWinRateStyle}>
+                            <div className='player-details-overview-label'>
+                                Recent Win Rate
+                            </div>
+                            <div className='player-details-overview-value'>
+                                {this.state.recentWinRate}%
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className='player-graphs'>
-
-                </div>
-                <div className='player-vehicles'>
-
+                <div className='player-details-overview-favorite-vehicle'>
+                    some tank data
                 </div>
             </div>
         )

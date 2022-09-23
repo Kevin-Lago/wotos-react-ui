@@ -21,6 +21,7 @@ body {
 .dark-theme {
   background-color: rgb(0, 0, 0, 0.8);
   color: white;
+  border: white;
 }
 
 .dark-theme-button {
@@ -46,6 +47,7 @@ body {
 .bright-theme {
   background-color: rgb(255, 255, 255, 0.8);
   color: black;
+  border: black;
 }
 
 .bright-theme-button {
@@ -101,12 +103,6 @@ main::-webkit-scrollbar-track {
 }
 
 @media only screen and (min-width: 1080px) {
-
-  body {
-    background-image: url('../src/assets/backgrounds/551461.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-  }
 
   #root {
     width: 100%;

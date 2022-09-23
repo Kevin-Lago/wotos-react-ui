@@ -14,8 +14,7 @@ export default class ContentMenu extends Component {
         this.state = {
             darkTheme: this.props.darkTheme,
             toggleDarkTheme: this.props.toggleDarkTheme,
-            changeContent: this.props.changeContent,
-            searchValue: ''
+            changeContent: this.props.changeContent
         }
     }
 

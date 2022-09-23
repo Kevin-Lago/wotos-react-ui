@@ -6,11 +6,13 @@
 
 .player-title {
     height: auto;
-    width: 100%;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
+    padding: .2em;
+    border-bottom: 1px solid;
 }
 
 .player-clan-tag {
@@ -28,5 +30,36 @@
 .player-details {
     height: auto;
     width: 100%;
+}
 
+.player-details-overview-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-details-overview-favorite-vehicle {
+    width: 100%;
+}
+
+.player-details-overview-value-wrapper {
+    font-weight: bold;
+    margin: .4em;
+    width: 100%;
+}
+
+.player-details-overview-label, .player-details-overview-value {
+    padding: .6em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-details-overview-value {
+    font-size: 2em;
+}
+
+.player-details-overview-values {
+    display: flex;
+    width: 100%;
 }

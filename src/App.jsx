@@ -13,10 +13,20 @@ export default class App extends Component {
         super(props);
         this.toggleDarkTheme = this.toggleDarkTheme.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        // this.getPlayerStatisticsSnapshots = this.getPlayerStatisticsSnapshots.bind(this);
+        // this.getPlayerVehicleStatisticsSnapshots = this.getPlayerVehicleStatisticsSnapshots.bind(this);
+        this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
+        this.getFullPlayerDetails = this.getFullPlayerDetails.bind(this);
+        this.getVehicles = this.getVehicles.bind(this);
 
         this.state = {
             darkTheme: true,
-            player: {},
+            searchPlayers: [],
+            player: {
+                playerDetails: {},
+                playerStatistics: {},
+                playerVehicleStatistics: {}
+            },
             clan: {},
             vehicles: {}
         }
@@ -31,30 +41,40 @@ export default class App extends Component {
             darkTheme: !this.state.darkTheme
         })
     }
-
-    getPlayerStatisticsSnapshots(accountIds) {
+    
+    getFullPlayerDetails(accountIds) {
         axios.get(
-            `http://localhost:8081/api/stats/players?accountIds=${accountIds}`
+            `http://localhost:8081/api/players?accountIds=${accountIds}`
         ).then(result => {
             this.setState({
-                playerStatistics: result.data
+                player: result.data
             })
-        }).error(error => {
-            console.log(error)
         })
     }
 
-    getPlayerVehicleStatisticsSnapshots(accountIds, vehicleIds) {
-        axios.get(
-            `http://localhost:8081/api/stats/vehicles?accountIds=${accountIds}&vehicleIds=${vehicleIds}`
-        ).then(result => {
-            this.setState({
-                vehicleStatistics: result.data
-            })
-        }).error(error => {
-            console.log(error)
-        })
-    }
+    // getPlayerStatisticsSnapshots(accountIds) {
+    //     axios.get(
+    //         `http://localhost:8081/api/stats/players?accountIds=${accountIds}`
+    //     ).then(result => {
+    //         this.setState({
+    //             playerStatistics: result.data
+    //         })
+    //     }).error(error => {
+    //         console.log(error)
+    //     })
+    // }
+
+    // getPlayerVehicleStatisticsSnapshots(accountIds, vehicleIds) {
+    //     axios.get(
+    //         `http://localhost:8081/api/stats/vehicles?accountIds=${accountIds}&vehicleIds=${vehicleIds}`
+    //     ).then(result => {
+    //         this.setState({
+    //             vehicleStatistics: result.data
+    //         })
+    //     }).error(error => {
+    //         console.log(error)
+    //     })
+    // }
 
     getVehicles(vehicleIds, fields) {
         axios.get(
@@ -68,11 +88,28 @@ export default class App extends Component {
         })
     }
 
+    handleSearchInputChange(event) {
+        // write logic to ignore before ','s
+
+        // axios.get(
+        //     ``
+        // ).then(result => {
+        //     this.setState({
+        //         searchPlayers: result.data
+        //     })
+        // }).error(error => {
+        //     console.log(error)
+        // })
+        this.setState({
+            searchValue: event.target.value
+        });
+    }
+
     handleSearch(searchValue, searchType) {
         if (searchType === "player") {
             this.playerSearch(searchValue);
         } else if (searchType === "clan") {
-            this.clanSearch(searchValue)
+            this.clanSearch(searchValue);
         }
     }
 
@@ -101,6 +138,7 @@ export default class App extends Component {
                     <SearchMenu
                         darkTheme={this.state.darkTheme}
                         handleSearch={this.handleSearch}
+                        handleSearchInputChange={this.handleSearchInputChange}
                     />
                     <ContentMenu
                         darkTheme={this.state.darkTheme}
@@ -109,7 +147,7 @@ export default class App extends Component {
                         <Route path="/" element={<Home darkTheme={this.state.darkTheme} />} />
                         <Route path="player" element={
                             this.state.player ?
-                                <Player darkTheme={this.state.darkTheme} />
+                                <Player darkTheme={this.state.darkTheme} player={this.state.player}/>
                                 :
                                 <div></div>
                         } />

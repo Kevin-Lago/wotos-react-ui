@@ -11,7 +11,7 @@ export default class PlayerVehicleCard extends Component {
     
     render() {
         return(
-            <div>
+            <div className='player-vehicle'>
                 
             </div>
         )
